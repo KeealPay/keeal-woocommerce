@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Keeal\WooCommerce\Admin;
 
+defined('ABSPATH') || exit;
+
 /**
  * Top-level Woo admin menu: Keeal → Transactions, Overview.
  */

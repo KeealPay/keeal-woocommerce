@@ -8,6 +8,8 @@ use Keeal\Checkout\KeealCheckoutException;
 use Keeal\WooCommerce\Api_Config;
 use Keeal\WooCommerce\Gateway;
 
+defined('ABSPATH') || exit;
+
 /**
  * Keeal → Overview: status + webhook URL + optional API test (Stripe-style lite panel).
  */

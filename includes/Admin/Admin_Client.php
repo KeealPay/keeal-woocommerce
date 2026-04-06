@@ -8,6 +8,8 @@ use Keeal\Checkout\KeealCheckout;
 use Keeal\WooCommerce\Api_Config;
 use Keeal\WooCommerce\Gateway;
 
+defined('ABSPATH') || exit;
+
 /**
  * Build Keeal API client from saved gateway settings (same credentials as checkout).
  */

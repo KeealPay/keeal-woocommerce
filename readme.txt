@@ -2,9 +2,9 @@
 Contributors: keeal
 Tags: woocommerce, payment, checkout, keeal
 Requires at least: 6.5
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 8.1
-Stable tag: 1.0.0
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,15 @@ Yes. The plugin registers with the Blocks payment API and ships a small `assets/
 Order and customer data needed to create a payment session is transmitted to Keeal’s API over HTTPS when checkout runs. Webhooks are sent to your site. Add details to your privacy policy as required by your jurisdiction.
 
 == Changelog ==
+
+= 1.0.3 =
+* Transactions list: `meta_key` order query with Plugin Check annotation; Plugin Check pass (ABSPATH, i18n, escaping, no redundant `load_plugin_textdomain`).
+
+= 1.0.2 =
+* Transactions list: use WooCommerce `meta_key` order query instead of `meta_query` (Plugin Check compatibility).
+
+= 1.0.1 =
+* Plugin Check: ABSPATH guards in all includes; fix text domain and escaping on gateway settings; remove redundant load_plugin_textdomain (WordPress.org loads translations); PHPCS annotations for safe GET usage.
 
 = 1.0.0 =
 * First public release: hosted checkout redirect, REST webhooks with signature verification, HPOS compatibility, Cart & Checkout Blocks payment registration.

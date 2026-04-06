@@ -6,6 +6,8 @@ namespace Keeal\WooCommerce\Admin;
 
 use Keeal\WooCommerce\Gateway;
 
+defined('ABSPATH') || exit;
+
 final class Admin_Layout
 {
     /**

@@ -9,6 +9,8 @@ use Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry;
 use Keeal\WooCommerce\Gateway;
 use WC_Payment_Gateway;
 
+defined('ABSPATH') || exit;
+
 /**
  * Registers Keeal with WooCommerce Cart & Checkout Blocks.
  */

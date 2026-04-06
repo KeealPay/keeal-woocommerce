@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Keeal\WooCommerce\Admin;
 
+defined('ABSPATH') || exit;
+
 final class Admin_Assets
 {
     public static function enqueue_ui(): void

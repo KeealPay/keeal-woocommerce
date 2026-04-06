@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Keeal\WooCommerce;
 
+defined('ABSPATH') || exit;
+
 final class Plugin
 {
     private static ?self $instance = null;
@@ -23,7 +25,6 @@ final class Plugin
         add_filter('woocommerce_payment_gateways', [$this, 'register_gateway']);
         StoreApi_Checkout::register();
         add_action('rest_api_init', [$this, 'register_rest']);
-        add_action('init', [$this, 'load_textdomain']);
         add_action('woocommerce_thankyou', [$this, 'thankyou_pending_notice'], 10, 1);
 
         if (is_admin()) {
@@ -91,15 +92,6 @@ final class Plugin
     {
         $this->webhook ??= new Webhook_Controller();
         $this->webhook->register_routes();
-    }
-
-    public function load_textdomain(): void
-    {
-        load_plugin_textdomain(
-            'keeal-for-woocommerce',
-            false,
-            dirname(plugin_basename(KEEAL_WC_PLUGIN_FILE)).'/languages'
-        );
     }
 
     /**

@@ -9,6 +9,8 @@ use WC_Order_Item_Fee;
 use WC_Order_Item_Product;
 use WC_Order_Item_Shipping;
 
+defined('ABSPATH') || exit;
+
 final class Order_Line_Builder
 {
     /**

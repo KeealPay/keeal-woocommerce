@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Keeal\WooCommerce;
 
+defined('ABSPATH') || exit;
+
 /**
  * Production API base URL is fixed. Custom base URLs are only used when
  * {@see KEEAL_WC_DEV_MODE} is true (define in wp-config.php for local/staging).

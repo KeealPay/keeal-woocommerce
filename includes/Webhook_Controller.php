@@ -10,6 +10,8 @@ use WP_REST_Request;
 use WP_REST_Response;
 use WP_REST_Server;
 
+defined('ABSPATH') || exit;
+
 final class Webhook_Controller
 {
     public function register_routes(): void

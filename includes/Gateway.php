@@ -10,6 +10,8 @@ use Keeal\Checkout\KeealCheckoutException;
 use WC_Order;
 use WC_Payment_Gateway;
 
+defined('ABSPATH') || exit;
+
 final class Gateway extends WC_Payment_Gateway
 {
     public const ID = 'keeal_hosted_checkout';
@@ -52,7 +54,9 @@ final class Gateway extends WC_Payment_Gateway
             return;
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only tab/section for WC settings screen (GET).
         $tab = isset($_GET['tab']) ? sanitize_text_field(wp_unslash($_GET['tab'])) : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only tab/section for WC settings screen (GET).
         $section = isset($_GET['section']) ? sanitize_text_field(wp_unslash($_GET['section'])) : '';
         if ($tab !== 'checkout' || $section !== self::ID) {
             return;
@@ -78,7 +82,7 @@ final class Gateway extends WC_Payment_Gateway
         $tagline = $this->get_method_description();
         ?>
         <div class="keeal-wc-gateway-admin" id="keeal-wc-gateway-settings">
-            <p class="keeal-wc-back-wrap"><?php wc_back_link(__('Return to payments', 'woocommerce'), admin_url('admin.php?page=wc-settings&tab=checkout')); ?></p>
+            <p class="keeal-wc-back-wrap"><?php wc_back_link(__('Return to payments', 'keeal-for-woocommerce'), admin_url('admin.php?page=wc-settings&tab=checkout')); ?></p>
             <div class="keeal-wc-settings-hero">
                 <img src="<?php echo esc_url(self::icon_url()); ?>" alt="" class="keeal-wc-settings-hero-icon" width="56" height="56" loading="lazy" decoding="async" />
                 <div class="keeal-wc-settings-hero-body">
@@ -92,7 +96,7 @@ final class Gateway extends WC_Payment_Gateway
                 </div>
             </div>
             <div class="keeal-wc-settings-card">
-                <table class="form-table"><?php echo $this->generate_settings_html($this->get_form_fields(), false); ?></table>
+                <table class="form-table"><?php echo wp_kses_post($this->generate_settings_html($this->get_form_fields(), false)); ?></table>
             </div>
         </div>
         <?php

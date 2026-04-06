@@ -17,8 +17,11 @@ rsync -a \
   --exclude '.DS_Store' \
   --exclude '.idea' \
   --exclude '.vscode' \
+  --exclude 'scripts/' \
+  --exclude '.gitignore' \
   "$ROOT/" "$STAGE/$PLUGIN_DIR/"
 
+rm -f "$ROOT/$ZIP_NAME"
 ( cd "$STAGE" && zip -qr "$ROOT/$ZIP_NAME" "$PLUGIN_DIR" )
 
 echo "Created: $ROOT/$ZIP_NAME"

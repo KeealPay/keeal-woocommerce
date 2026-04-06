@@ -8,6 +8,8 @@ use Keeal\Checkout\KeealCheckoutException;
 use Keeal\WooCommerce\Gateway;
 use WC_Order;
 
+defined('ABSPATH') || exit;
+
 /**
  * Lists Keeal checkout sessions (merchant API) and shows session detail.
  */
@@ -21,6 +23,7 @@ final class Transactions_Page
             return;
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Admin list/detail navigation (GET).
         $session_id = isset($_GET['session_id']) ? sanitize_text_field(wp_unslash($_GET['session_id'])) : '';
         if ($session_id !== '') {
             self::render_detail($session_id);
@@ -34,6 +37,7 @@ final class Transactions_Page
     private static function render_list(): void
     {
         $client = Admin_Client::from_settings();
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- List pagination (GET).
         $paged = isset($_GET['paged']) ? max(1, (int) $_GET['paged']) : 1;
         $gw_url = admin_url('admin.php?page=wc-settings&tab=checkout&section='.Gateway::ID);
         $overview_url = admin_url('admin.php?page=keeal-overview');
@@ -253,12 +257,7 @@ final class Transactions_Page
             'offset' => $offset,
             'orderby' => 'date',
             'order' => 'DESC',
-            'meta_query' => [
-                [
-                    'key' => '_keeal_checkout_session_id',
-                    'compare' => 'EXISTS',
-                ],
-            ],
+            'meta_key' => '_keeal_checkout_session_id', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Admin Keeal transactions; paginated; filter required.
         ]);
 
         $has_more = count($orders) > $limit;

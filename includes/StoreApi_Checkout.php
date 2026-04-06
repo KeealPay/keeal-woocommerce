@@ -10,6 +10,8 @@ use Automattic\WooCommerce\StoreApi\Payments\PaymentResult;
 use Automattic\WooCommerce\StoreApi\Utilities\NoticeHandler;
 use WC_Payment_Gateway;
 
+defined('ABSPATH') || exit;
+
 /**
  * Checkout block / Store API payment processing.
  *

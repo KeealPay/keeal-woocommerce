@@ -1,0 +1,637 @@
+/**
+ * Keeal WooCommerce admin — Transactions & Overview.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap");
+
+/* Keeal brand: blues aligned with logo + readable neutrals */
+:root {
+  --keeal-bg: #f0f4fc;
+  --keeal-surface: #ffffff;
+  --keeal-ink: #0f172a;
+  --keeal-ink-muted: #475569;
+  --keeal-brand: #2563eb;
+  --keeal-brand-deep: #1d4ed8;
+  --keeal-brand-night: #172554;
+  --keeal-brand-glow: #38bdf8;
+  --keeal-accent: #0ea5e9;
+  --keeal-accent-soft: rgba(37, 99, 235, 0.14);
+  --keeal-border: rgba(15, 23, 42, 0.1);
+  --keeal-shadow: 0 1px 2px rgba(15, 23, 42, 0.06),
+    0 12px 36px rgba(23, 37, 84, 0.1);
+  --keeal-radius: 14px;
+  --keeal-radius-sm: 10px;
+  --keeal-font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --keeal-font-body: "DM Sans", system-ui, -apple-system, sans-serif;
+}
+
+/* Scope to our screens */
+.keeal-wc-admin-ui {
+  margin-inline: -12px;
+  margin-top: -10px;
+  padding: 0 12px 40px;
+  font-family: var(--keeal-font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--keeal-ink);
+  background: var(--keeal-bg);
+  min-height: 320px;
+}
+
+@media screen and (min-width: 783px) {
+  .keeal-wc-admin-ui {
+    margin-inline: -20px;
+    padding: 0 20px 48px;
+  }
+}
+
+.keeal-wc-admin-ui *,
+.keeal-wc-admin-ui *::before,
+.keeal-wc-admin-ui *::after {
+  box-sizing: border-box;
+}
+
+/* Hero — Keeal blue gradient (logo-forward) */
+.keeal-wc-hero {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--keeal-brand-night) 0%,
+    var(--keeal-brand-deep) 42%,
+    var(--keeal-brand) 100%
+  );
+  color: #f8fafc;
+  border-radius: var(--keeal-radius);
+  padding: 28px 32px 32px;
+  margin-bottom: 28px;
+  box-shadow: var(--keeal-shadow);
+  overflow: hidden;
+}
+
+/* WP admin forces dark .wrap h1 / paragraphs — keep hero copy readable on brand gradient */
+.keeal-wc-hero .keeal-wc-hero-kicker,
+.keeal-wc-hero .keeal-wc-hero-title,
+.keeal-wc-hero h1.keeal-wc-hero-title,
+.keeal-wc-hero .keeal-wc-hero-sub,
+.keeal-wc-hero .keeal-wc-hero-text {
+  color: #f5faf8 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
+}
+
+.keeal-wc-hero .keeal-wc-hero-kicker {
+  color: rgba(255, 255, 255, 0.88) !important;
+  opacity: 1;
+}
+
+.keeal-wc-hero .keeal-wc-hero-sub {
+  color: rgba(255, 255, 255, 0.93) !important;
+  opacity: 1;
+}
+
+.keeal-wc-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      ellipse 85% 55% at 100% -10%,
+      rgba(56, 189, 248, 0.35),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 0% 100%,
+      rgba(255, 255, 255, 0.08),
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+.keeal-wc-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px 32px;
+}
+
+.keeal-wc-hero-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.keeal-wc-hero-text {
+  flex: 1;
+  min-width: 220px;
+}
+
+.keeal-wc-hero-kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.82;
+  margin: 0 0 6px;
+}
+
+.keeal-wc-hero-title {
+  font-family: var(--keeal-font-display);
+  font-size: clamp(1.55rem, 2.5vw, 2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.keeal-wc-hero-sub {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.88;
+  max-width: 48em;
+}
+
+.keeal-wc-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.keeal-wc-hero-actions .button {
+  border-radius: 8px !important;
+  border: none !important;
+  font-weight: 600 !important;
+  padding: 8px 16px !important;
+  min-height: auto !important;
+  line-height: 1.4 !important;
+}
+
+.keeal-wc-hero-actions .button:not(.button-primary) {
+  background: rgba(255, 255, 255, 0.14) !important;
+  color: #fff !important;
+  text-shadow: none !important;
+}
+
+.keeal-wc-hero-actions .button:not(.button-primary):hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+}
+
+.keeal-wc-hero-actions .button.button-primary {
+  background: #fff !important;
+  color: var(--keeal-brand-deep) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+}
+
+.keeal-wc-hero-actions .button.button-primary:hover {
+  background: #f1f5f9 !important;
+  color: var(--keeal-brand-night) !important;
+}
+
+.keeal-wc-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.keeal-wc-hero-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7dd87a;
+  box-shadow: 0 0 0 2px rgba(125, 216, 122, 0.4);
+}
+
+/* Toolbar / meta strip */
+.keeal-wc-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.keeal-wc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--keeal-surface);
+  border: 1px solid var(--keeal-border);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--keeal-ink-muted);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.keeal-wc-chip strong {
+  color: var(--keeal-ink);
+  font-weight: 600;
+}
+
+/* Panel card */
+.keeal-wc-panel {
+  background: var(--keeal-surface);
+  border-radius: var(--keeal-radius);
+  border: 1px solid var(--keeal-border);
+  box-shadow: var(--keeal-shadow);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+/* Section title — standard wp-admin postbox / list screen bar */
+.keeal-wc-panel-h {
+  padding: 14px 18px;
+  border-bottom: 1px solid #c3c4c7;
+  background: #f6f7f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 0;
+  color: #1d2327;
+}
+
+/* Session activity — standard-size wp-list-table (widefat / striped) */
+.keeal-wc-admin-ui .keeal-wc-tx-table {
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  border-radius: 0;
+  border-collapse: collapse;
+}
+
+.keeal-wc-admin-ui .keeal-wc-tx-table.keeal-wc-tx-table--nested {
+  border-top: 1px solid #c3c4c7;
+}
+
+.keeal-wc-admin-ui .keeal-wc-tx-table thead th {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #1d2327;
+  padding: 12px 14px !important;
+  border-bottom: 1px solid #c3c4c7 !important;
+  background: #f6f7f7 !important;
+}
+
+.keeal-wc-admin-ui .keeal-wc-tx-table thead th.column-primary {
+  font-weight: 600;
+}
+
+.keeal-wc-admin-ui .keeal-wc-tx-table .column-date {
+  width: 12.5em;
+}
+
+.keeal-wc-admin-ui .keeal-wc-tx-table .column-session {
+  width: 26%;
+  min-width: 7.5rem;
+}
+
+.keeal-wc-admin-ui .keeal-wc-tx-table tbody td {
+  padding: 12px 14px !important;
+  line-height: 1.5;
+  vertical-align: middle;
+  border-color: #c3c4c7 !important;
+  font-size: 14px;
+  color: #2c3338;
+}
+
+.keeal-wc-admin-ui .keeal-wc-tx-table tbody tr:hover td {
+  background: #f0f6fc !important;
+}
+
+.keeal-wc-admin-ui .keeal-wc-tx-table .column-session code,
+.keeal-wc-admin-ui .keeal-wc-tx-table code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 3px 7px;
+  border-radius: 4px;
+  word-break: break-all;
+}
+
+.keeal-wc-admin-ui .keeal-wc-tx-table a {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--keeal-brand-deep);
+}
+
+.keeal-wc-admin-ui .keeal-wc-tx-table a:hover {
+  color: var(--keeal-brand);
+  text-decoration: underline;
+}
+
+.keeal-wc-admin-ui .keeal-wc-amount {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--keeal-ink);
+}
+
+.keeal-wc-admin-ui .keeal-wc-empty-cell {
+  text-align: center;
+  padding: 40px 24px !important;
+  color: #646970;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Status — standard list badge size */
+.keeal-wc-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: normal;
+  background: #f0f0f1;
+  color: #50575e;
+}
+
+.keeal-wc-status-complete,
+.keeal-wc-status-paid,
+.keeal-wc-status-processing,
+.keeal-wc-status-completed {
+  background: #dbece6;
+  color: #14532d;
+}
+
+.keeal-wc-status-open,
+.keeal-wc-status-pending,
+.keeal-wc-status-on-hold,
+.keeal-wc-status-on_hold {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.keeal-wc-status-expired,
+.keeal-wc-status-canceled,
+.keeal-wc-status-cancelled,
+.keeal-wc-status-failed,
+.keeal-wc-status-refunded {
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+/* Pagination */
+.keeal-wc-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 18px 24px;
+  background: var(--keeal-surface);
+  border-radius: var(--keeal-radius-sm);
+  border: 1px solid var(--keeal-border);
+  margin-top: 4px;
+}
+
+.keeal-wc-pagination .button {
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+}
+
+.keeal-wc-page-label {
+  font-size: 13px;
+  color: var(--keeal-ink-muted);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Notices — force readable text (WP / color schemes often break contrast here) */
+.keeal-wc-admin-ui .notice {
+  border-radius: var(--keeal-radius-sm) !important;
+  border-left-width: 4px !important;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.08);
+  padding: 14px 18px !important;
+  margin: 0 0 20px !important;
+  max-width: 960px;
+  background: var(--keeal-surface) !important;
+  color: var(--keeal-ink) !important;
+}
+
+.keeal-wc-admin-ui .notice p,
+.keeal-wc-admin-ui .notice li {
+  margin: 0.35em 0 0;
+  font-size: 14px;
+  color: var(--keeal-ink) !important;
+}
+
+.keeal-wc-admin-ui .notice p:first-child {
+  margin-top: 0;
+}
+
+.keeal-wc-admin-ui .notice a {
+  color: var(--keeal-brand-deep) !important;
+  font-weight: 600;
+}
+
+.keeal-wc-admin-ui .notice-info {
+  background: #eff6ff !important;
+  border-left-color: var(--keeal-brand) !important;
+}
+
+.keeal-wc-admin-ui .notice-warning {
+  background: #fffbeb !important;
+  border-left-color: #d97706 !important;
+}
+
+.keeal-wc-admin-ui .notice-error {
+  background: #fef2f2 !important;
+  border-left-color: #dc2626 !important;
+}
+
+.keeal-wc-admin-ui .notice-success {
+  background: #f0fdf4 !important;
+  border-left-color: #16a34a !important;
+}
+
+/* Toolbar / intro copy on light background (never inherit hero white) */
+.keeal-wc-toolbar .description,
+.keeal-wc-toolbar p {
+  color: var(--keeal-ink-muted) !important;
+}
+
+.keeal-wc-toolbar strong {
+  color: var(--keeal-ink) !important;
+}
+
+/* Detail layout */
+.keeal-wc-detail-head {
+  margin-bottom: 24px;
+}
+
+.keeal-wc-detail-head .button {
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+}
+
+.keeal-wc-session-code {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: var(--keeal-surface);
+  border: 1px solid var(--keeal-border);
+  border-radius: var(--keeal-radius-sm);
+  font-family: ui-monospace, monospace;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.keeal-wc-dl {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0 0 24px;
+}
+
+.keeal-wc-dl th {
+  text-align: left;
+  width: 180px;
+  padding: 12px 14px !important;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+  color: #1d2327;
+  border-bottom: 1px solid #c3c4c7;
+  vertical-align: top;
+  background: #f6f7f7;
+}
+
+.keeal-wc-dl td {
+  padding: 12px 14px !important;
+  border-bottom: 1px solid #c3c4c7;
+  font-size: 14px;
+}
+
+.keeal-wc-subpanel-h {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 20px 18px 0;
+  padding: 10px 0 8px;
+  border-bottom: 1px solid #c3c4c7;
+  color: #1d2327;
+}
+
+/* Overview grid */
+.keeal-wc-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.keeal-wc-stat-card {
+  background: var(--keeal-surface);
+  border: 1px solid var(--keeal-border);
+  border-radius: var(--keeal-radius-sm);
+  padding: 20px 22px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.keeal-wc-stat-card:hover {
+  box-shadow: var(--keeal-shadow);
+  transform: translateY(-2px);
+}
+
+.keeal-wc-stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--keeal-ink-muted);
+  margin: 0 0 8px;
+}
+
+.keeal-wc-stat-value {
+  font-family: var(--keeal-font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--keeal-brand-night);
+}
+
+.keeal-wc-stat-value.keeal-wc-ok {
+  color: #166534;
+}
+
+.keeal-wc-stat-value.keeal-wc-warn {
+  color: #b45309;
+}
+
+.keeal-wc-stat-value.keeal-wc-bad {
+  color: #be123c;
+}
+
+.keeal-wc-stat-meta {
+  margin: 10px 0 0;
+  font-size: 13px;
+}
+
+.keeal-wc-stat-meta a {
+  font-weight: 600;
+}
+
+.keeal-wc-webhook-field {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.keeal-wc-webhook-field input {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 14px !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--keeal-border) !important;
+  font-size: 13px !important;
+  background: #fff !important;
+}
+
+.keeal-wc-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.keeal-wc-actions-row .button-primary {
+  border-radius: 8px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  font-weight: 600 !important;
+}
+
+/* Hide WordPress default heading when we use hero */
+.keeal-wc-admin-ui > h1.wp-heading-inline,
+.keeal-wc-admin-ui > hr.wp-header-end {
+  display: none;
+}
+
+.keeal-wc-admin-ui .form-wrap h1 {
+  display: none;
+}

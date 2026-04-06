@@ -1,0 +1,164 @@
+/**
+ * Keeal gateway: WooCommerce → Settings → Payments → Keeal Payment
+ */
+
+.keeal-wc-gateway-admin {
+  max-width: 920px;
+  margin: 1.25rem 0 2rem;
+}
+
+.keeal-wc-gateway-admin .keeal-wc-back-wrap {
+  margin: 0 0 1rem;
+}
+
+.keeal-wc-gateway-admin .keeal-wc-back-wrap .wc-back-link {
+  font-size: 13px;
+}
+
+.keeal-wc-settings-hero {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.35rem 1.5rem 1.45rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #f0f4ff 0%, #eef2ff 45%, #f8fafc 100%);
+  border: 1px solid #c7d2fe;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.keeal-wc-settings-hero-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(59, 91, 219, 0.2);
+}
+
+.keeal-wc-settings-hero-body {
+  min-width: 0;
+}
+
+.keeal-wc-settings-hero-title {
+  margin: 0 0 0.35rem;
+  padding: 0;
+  font-size: 1.35rem;
+  font-weight: 650;
+  line-height: 1.25;
+  color: #1e1b4b;
+  border: none;
+  box-shadow: none;
+}
+
+.keeal-wc-settings-hero-tagline {
+  margin: 0 0 0.85rem;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4338ca;
+  max-width: 52rem;
+}
+
+.keeal-wc-pay-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.keeal-wc-pay-methods li {
+  margin: 0;
+  padding: 0.28rem 0.65rem;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #3730a3;
+  background: #fff;
+  border: 1px solid #a5b4fc;
+  border-radius: 999px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+}
+
+.keeal-wc-settings-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.5rem 1.5rem 1.25rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.keeal-wc-settings-card .form-table {
+  margin-top: 0;
+}
+
+.keeal-wc-settings-card .form-table th {
+  padding-left: 0;
+  width: 200px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.keeal-wc-settings-card .form-table td {
+  padding-right: 0;
+}
+
+.keeal-wc-settings-card .form-table tr:first-child th,
+.keeal-wc-settings-card .form-table tr:first-child td {
+  padding-top: 1rem;
+}
+
+/* Section headings (WooCommerce `type => title` rows) */
+.keeal-wc-settings-card .form-table h3,
+.keeal-wc-settings-card .form-table .wc-settings-sub-title {
+  margin: 1.35rem 0 0.35rem;
+  font-size: 14px;
+  font-weight: 650;
+  color: #1e293b;
+  letter-spacing: 0.02em;
+}
+
+.keeal-wc-settings-card .description,
+.keeal-wc-settings-card p.description {
+  color: #64748b;
+  font-size: 13px;
+  margin-top: 0.35rem;
+}
+
+.keeal-wc-settings-card input[type="text"],
+.keeal-wc-settings-card input[type="password"],
+.keeal-wc-settings-card input[type="url"],
+.keeal-wc-settings-card textarea {
+  border-radius: 8px;
+  border-color: #cbd5e1;
+}
+
+.keeal-wc-settings-card input[type="text"]:focus,
+.keeal-wc-settings-card input[type="password"]:focus,
+.keeal-wc-settings-card textarea:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 1px #6366f1;
+}
+
+.keeal-wc-settings-card code {
+  padding: 0.15rem 0.4rem;
+  background: #f1f5f9;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 782px) {
+  .keeal-wc-settings-hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .keeal-wc-settings-card .form-table th {
+    width: auto;
+  }
+
+  .keeal-wc-pay-methods {
+    justify-content: center;
+  }
+}

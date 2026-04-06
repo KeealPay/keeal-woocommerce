@@ -4,7 +4,7 @@ Tags: woocommerce, payment, checkout, keeal
 Requires at least: 6.5
 Tested up to: 6.9
 Requires PHP: 8.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ Yes. The plugin registers with the Blocks payment API and ships a small `assets/
 Order and customer data needed to create a payment session is transmitted to Keeal’s API over HTTPS when checkout runs. Webhooks are sent to your site. Add details to your privacy policy as required by your jurisdiction.
 
 == Changelog ==
+
+= 1.0.4 =
+* Fix payment settings: do not run gateway settings HTML through `wp_kses_post()` (it stripped password/API inputs). Documented PHPCS exception for WC-generated markup.
 
 = 1.0.3 =
 * Transactions list: `meta_key` order query with Plugin Check annotation; Plugin Check pass (ABSPATH, i18n, escaping, no redundant `load_plugin_textdomain`).

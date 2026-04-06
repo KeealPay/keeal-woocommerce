@@ -3,7 +3,7 @@
         'name' => 'keeal/woocommerce',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '0afa9254ee4382bec54b2d1f5637fe99d0bb85aa',
+        'reference' => '95825bc4941d3532a6dd1e1cc920691d8a008e0b',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'keeal/woocommerce' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '0afa9254ee4382bec54b2d1f5637fe99d0bb85aa',
+            'reference' => '95825bc4941d3532a6dd1e1cc920691d8a008e0b',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -96,7 +96,10 @@ final class Gateway extends WC_Payment_Gateway
                 </div>
             </div>
             <div class="keeal-wc-settings-card">
-                <table class="form-table"><?php echo wp_kses_post($this->generate_settings_html($this->get_form_fields(), false)); ?></table>
+                <table class="form-table"><?php
+                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML from WC_Settings_API::generate_settings_html(); wp_kses_post() strips <input> and breaks API key / webhook fields.
+                    echo $this->generate_settings_html($this->get_form_fields(), false);
+                ?></table>
             </div>
         </div>
         <?php

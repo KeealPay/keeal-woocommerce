@@ -1,2 +1,7 @@
-/vendor/
-composer.lock
+# Release artifacts (build with scripts/build-release.sh)
+*.zip
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

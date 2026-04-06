@@ -1,0 +1,44 @@
+{
+    "packages": [
+        {
+            "name": "keeal/keeal-php",
+            "version": "0.1.0",
+            "version_normalized": "0.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KeealPay/keeal-php.git",
+                "reference": "749f20002515a8d9913e58a7d4fbc41c662e22e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KeealPay/keeal-php/zipball/749f20002515a8d9913e58a7d4fbc41c662e22e1",
+                "reference": "749f20002515a8d9913e58a7d4fbc41c662e22e1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^8.1"
+            },
+            "time": "2026-04-06T08:12:07+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Keeal\\Checkout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Keeal PHP SDK — hosted checkout REST API client",
+            "support": {
+                "issues": "https://github.com/KeealPay/keeal-php/issues",
+                "source": "https://github.com/KeealPay/keeal-php/tree/v0.1.0"
+            },
+            "install-path": "../keeal/keeal-php"
+        }
+    ],
+    "dev": false,
+    "dev-package-names": []
+}

@@ -1,0 +1,56 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "78bd32a205cc0f0478fbcc05692e1344",
+    "packages": [
+        {
+            "name": "keeal/keeal-php",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KeealPay/keeal-php.git",
+                "reference": "749f20002515a8d9913e58a7d4fbc41c662e22e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KeealPay/keeal-php/zipball/749f20002515a8d9913e58a7d4fbc41c662e22e1",
+                "reference": "749f20002515a8d9913e58a7d4fbc41c662e22e1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^8.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Keeal\\Checkout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Keeal PHP SDK — hosted checkout REST API client",
+            "support": {
+                "issues": "https://github.com/KeealPay/keeal-php/issues",
+                "source": "https://github.com/KeealPay/keeal-php/tree/v0.1.0"
+            },
+            "time": "2026-04-06T08:12:07+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {},
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=8.1"
+    },
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
+}

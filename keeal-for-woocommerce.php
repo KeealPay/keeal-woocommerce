@@ -3,7 +3,7 @@
  * Plugin Name: Keeal for WooCommerce
  * Plugin URI: https://keeal.com
  * Description: Offer Keeal Payment in WooCommerce—customers complete checkout on Keeal’s secure hosted page. Enter your Keeal API key and webhook details; production uses https://api.keeal.com/api.
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: Keeal
  * Text Domain: keeal-for-woocommerce
  * Requires at least: 6.5
@@ -21,7 +21,7 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
-define('KEEAL_WC_VERSION', '1.0.4');
+define('KEEAL_WC_VERSION', '1.0.5');
 define('KEEAL_WC_PLUGIN_FILE', __FILE__);
 define('KEEAL_WC_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('KEEAL_WC_PLUGIN_URL', plugin_dir_url(__FILE__));
